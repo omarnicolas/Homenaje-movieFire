@@ -14,6 +14,7 @@ function updateMovie(id, data) {
 }
 
 function getMovieDetails(id) {
+  // @TODO: Refactor usando arrays
   return new Promise((resolve, reject) => {
     moviesRef.child(id).on("value", data => {
       resolve(data.val());
@@ -21,14 +22,36 @@ function getMovieDetails(id) {
   });
 }
 
-// @TODO: Refactor para trabajar con UI directamente
-function getMovies() {
-  moviesRef.on("value", data => {
-    console.log("data", data.val());
-  });
-}
-
 function getMovieData(title) {
   const url = `http://www.omdbapi.com/?t=${title}&apikey=${apiKey}`;
   return fetch(url).then(res => res.json());
 }
+
+const filmSlctr = document.getElementById("peliculas");
+const titleSlctr = document.getElementById("title");
+
+// Eventos
+
+moviesRef.on("value", data => {
+  const peliculasData = data.val();
+  console.log("data:", peliculasData);
+
+  let htmlFinal = "";
+
+  for (const key in peliculasData) {
+    if (peliculasData.hasOwnProperty(key)) {
+      const element = peliculasData[key];
+      htmlFinal += `<li>${element.Title}</li>`;
+    }
+  }
+
+  filmSlctr.innerHTML = htmlFinal;
+});
+
+titleSlctr.addEventListener("keyup", event => {
+  const titleContent = titleSlctr.value.trim();
+  if (event.keyCode === 13 && titleContent) {
+    console.log("ahora si", titleContent);
+    getMovieData(titleContent).then(addMovie);
+  }
+});
