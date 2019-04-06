@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MovieFire</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>MovieFire</h1>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCLx9wOHnxG4kG0hFa300CPd3daAoBM3fI",
+        authDomain: "homenaje-movifire.firebaseapp.com",
+        databaseURL: "https://homenaje-movifire.firebaseio.com",
+        projectId: "homenaje-movifire",
+        storageBucket: "homenaje-movifire.appspot.com",
+        messagingSenderId: "557647786999"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
