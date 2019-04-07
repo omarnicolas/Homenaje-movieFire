@@ -5,23 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>MovieFire</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/nes.css@2.1.0/css/nes.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <h1>MovieFire</h1>
 
-    <label for="title">Pelicula: </label>
-    <input id="title" type="text" placeholder="pon un título" />
-    <ul id="peliculas"></ul>
-    <hr />
-    <marquee behavior="" direction=""
-      >Esto necesita tu Pull Request.... ¡Y lo sabes!
-      <img
-        width="30px"
-        src="https://ep01.epimg.net/verne/imagenes/2017/07/06/articulo/1499348316_032426_1499348987_noticia_normal.jpg"
-      />
-    </marquee>
-    <div id="details"></div>
+  <body>
+    <div class="container">
+      <main class="main-content">
+        <div class="title-section">
+          <h1 class="main-title">MovieFire</h1>
+          <div>
+            <i class="nes-octocat animate"></i>
+            <a href="https://github.com/omarnicolas/homenaje-movieFire">Repo</a>
+          </div>
+        </div>
+        <section class="nes-container with-title">
+          <label class="title" for="title">Pelicula</label>
+          <input
+            id="title"
+            type="text"
+            class="nes-input"
+            placeholder="Pon un título"
+          />
+
+          <div class="lists">
+            <ul id="peliculas" class="nes-list is-circle"></ul>
+          </div>
+        </section>
+
+        <marquee behavior="" direction="">
+          <section class="icon-list">
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large star"></i>
+            <img
+              width="100px"
+              height="64px"
+              src="https://ep01.epimg.net/verne/imagenes/2017/07/06/articulo/1499348316_032426_1499348987_noticia_normal.jpg"
+            />
+            <i class="nes-icon is-large star"></i>
+            <i class="nes-icon is-large heart"></i>
+          </section>
+        </marquee>
+        <div class="nes-container is-dark with-title">
+          <p class="title">Detalles</p>
+          <div id="details">
+            Pincha en el botón Detalles para ver más información de la peli
+          </div>
+        </div>
+      </main>
+      <footer>
+        <span>2019</span>
+      </footer>
+    </div>
+    <!-- Borrar película caja de diálogo -->
+    <section>
+      <dialog class="nes-dialog" id="dialog-delete">
+        <form method="dialog">
+          <p class="title">Borrar Película</p>
+          <p>¿Estás seguro que quieres borrarla?</p>
+          <menu class="dialog-menu">
+            <button type="reset" data-action="cancel" class="nes-btn">
+              No
+            </button>
+            <button type="submit" class="nes-btn is-primary">
+              Si
+            </button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
 
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-database.js"></script>
@@ -37,6 +96,7 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script src="polyfills/dialog-polyfill.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
